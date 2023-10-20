@@ -8,40 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script>
-      var votesNumber = '21.9k';
-      var proposalsNumber = '950';
-      var transactionsNumber = '339';
+      var votesNumber = '18,981';
+      var proposalsNumber = '1,858';
+      var transactionsNumber = '121';
 
-      (async function fetchData() {
-        const data = JSON.stringify({
-          query: `query Nance {
-            proposals (
-              first: 0
-            )
-            {
-              id
-              title
-            }
-          }`,
-        });
-        const response = fetch(
-          'https://hub.snapshot.org/graphql?operationName=Nance&query=query%20Nance%20%7B%0A%20%20proposals(first%3A%201000%2C%20where%3A%20%7Bauthor%3A%20"0x50e70c43a5DD812e2309eAcea61348041011b4BA"%7D)%20%7B%0A%20%20%20%20id%0A%20%20%20%20title%0A%20%20%7D%0A%20%20votes(first%3A%201000%2C%20where%3A%20%7Bapp%3A%20"jbdao-org"%7D)%20%7B%0A%20%20%20%20id%0A%20%20%7D%0A%7D%0A',
-          {
-            method: 'post',
-            body: data,
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Apikey YOUR_API_KEY',
-            },
-          }
-        ).then(response => response.json())
-          .then(data => {
-            proposalsNumber = data.data.proposals.length;
-            votesNumber = data.data.votes.length;
-            document.getElementById('proposalsNumber').innerHTML = proposalsNumber;
-            document.getElementById('votesNumber').innerHTML = votesNumber;
-          });
-      })();
+      // This script will be used to get the numbers dinamically.
 
       window.addEventListener("load", (event) => {
         document.getElementById('votesNumber').innerHTML = votesNumber;
@@ -55,49 +26,49 @@
     <header class="nav-bar">
         <img src="./assets/logo-min.svg" alt="Nance Logo">
         <div class="nav-bar-links">
-            <a href="">App</a>
-            <a href="">How it works</a>
-            <a href="">Discord</a>
-            <a href="">Support us</a>
+            <a target="_blank" href="https://nance.app/s">App</a>
+            <a target="_blank" href="https://coordinerds.gitbook.io/how-nance-works/group-1/nance-overview">How it works</a>
+            <a target="_blank" href="https://discord.gg/tYU45HDrKu">Discord</a>
+            <a target="_blank" href="https://juicebox.money/@nance-app">Support us</a>
         </div>
         <div class="app-buttons">
-          <button class="blue-text">Get Early Access</button>
+          <a class="button-link" target="_blank" href="https://juicebox.money/@nance-app">Get Early Access</a>
         </div>
     </header>
 
     <div class="page-content">
       <section>
-        <h1><span class="blue-text">Improve</span> and <span class="blue-text">integrate</span> <br />your governance flow seamlessly</h1>
+        <!-- <h1><span class="blue-text">Improve</span> and <span class="blue-text">integrate</span> <br />your governance flow seamlessly</h1> -->
+        <h1><span class="blue-text">The era of streamlined <br />gover</span>Nance is here</h1>
         <h2>Propose, discuss, vote and execute with your DAO <br /> on scheduled <span class="blue-text">governance cycles</span>.</h2>
         
         <div class="app-buttons">
-          <button class="blue-text bg-black">Explore</button>
-          <button class="blue-text">Get Early Access</button>
+          <a class="button-link bg-black" target="_blank" href="https://juicebox.money/@nance-app">Explore</a>
+          <a class="button-link" target="_blank" href="https://juicebox.money/@nance-app">Get Early Access</a>
         </div>
         
         <h2 class="social-media-text">Plug and play with:</h2>
         <div class="social-media-logo">
-          <img src="./assets/snapshot.jpeg" alt=""> <!-- ?? -->
-          <img src="./assets/discord.png" alt=""> <!-- Discord -->
-          <img src="./assets/safe.png" alt=""> <!-- ?? -->
-          <img src="./assets/juicebox.jpeg" alt=""> <!-- JuiceBox -->
+          <img src="./assets/snapshot.jpeg" alt="">
+          <img src="./assets/discord.png" alt="">
+          <img src="./assets/safe.png" alt="">
+          <img src="./assets/juicebox.jpeg" alt="">
         </div>
       </section>
-      <section>
-        
+      <section style="margin-bottom: 100px;">
         <h2 class="data-cards-text">Ease your governance process with Nance</h2>
         <div class="data-cards">
           <div>
             <p><span id="votesNumber"></span></p>
-            <p>Total<br />Votes</p>
+            <p>Page<br />Views</p>
           </div>
           <div class="blue-text">
             <p><span id="proposalsNumber"></span></p>
-            <p>Proposals<br />Submitted</p>
+            <p>Total<br />Votes</p>
           </div>
           <div>
             <p><span id="transactionsNumber"></span></p>
-            <p>Transactions<br />Creates</p>
+            <p>Unique<br />Vies</p>
           </div>
         </div>
         <h2 class="nance-flow-text">Using scheduled <span class="blue-text">Governance Cycles</span></h2>
